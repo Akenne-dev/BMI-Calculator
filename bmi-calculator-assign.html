@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAACT1BMVEX/////AQE0zP7/zDL/ZgABzjUzMzMAAAD8/Pz///39////ZQEBzTY1NTXnAAA0y/8lJSXu7u4vLy/Nzc309PT4//8nJycgICAxzfrn5+erq6sbGxvtAADh4eETExPV1dVFy+jl+v98fHy7u7tISEihoaHR0dH2AAAVFRU9PT23t7fjAADFxcVzc3OVlZX2YwCJiYleXl5TU1P///Samppra2tZWVn+yzcAvzT8zi7UAADwzczuwsX8/uv044/x1Fz6983nZwAAxCVh0372yz7iZQD3bAPhdHWz6vXpXAD99sT77bD456H044r66aj42Xv302bwy0zx0Eb13Wv654/49Kzz5Hzu0Evs/PTs3JL71HDm0Wjb2YXr11/n1nrH996C25c7tGG07Mf775npxVDl45b2+Kv68OLWjU/qsH355cNEyWvy+cf/5bPwx5/ijUcqwFDom2vldzAMvEDb+97+yE6i98KX8rEv1VjxvXzv1qLsqGDhdzL52blw4ZGXwKXqyorUlWJzyoSP06nx2J3jt5DdoX16ypLQfk/Qn15b1nfsrHbOlHeA2Z8nzUzqvo/njDS93r33t2nkf0PaYSH71Y5p44jUvIzJZgSE76dEuVxW6H02mmTAYSYThSYbqj0SVRVy2fDpn5i3AAAWYykUTiTeOD0cPyLjWFbhfHjuLzDLhYzKTUqU7/ytAA7yn6KpOkT0Mi4YejHngGpb0t6Oy+BAf0y0WU/IaHXwuauZPlXGNzH7ZWeZ0M5ytb7VuK5x4+qfFhTxmo3AkpCrf4Q7Qs1EAAAaWklEQVR4nO1diV/bdpYXpyXZBttINsYnVwy2QYADtgHHYC6bI1yBkGYSqJkuCUwCAUqaAzZNk00bNsdu2unMdGeyuC0FEibtNNmWzWTbyewftu9JNglgY5gZ47Sr78fGtuRDv6/e8X3vJwmCECFChAgRIkSIECFChAgRIkSIECFChAgRIkSIECFChAgRIkSIECHiDQG540n4ORl5Fl5BktvfEfOr8CkZ88t3W3bQMOXk5JhwZCar1UCQSv4lYbArCUILf0jGbicJpd1O4EIG3sfYrXYGlhfm5eDHSK0dVsAzu5aEz+bA5wzwcCiHtJsI0lAIbyVy7FqCtNuVjB3W2JX8aliPrwywzH7IRCSVjCqjSi2pIIhySanKmEfkSNQ6SQ1jkBQQZFEpAxxJJCbisCQThlspyYNNrVQUGasYpgoeKnHLiyVkMaxQGgsZTYlGIjfBVyl0xkymzKhl5FVoQkXwAwaJJMckUZToJDmlOo1RIWE0OoVCUqwsUWh0kvLkclBGEMUaJkdymCQrJAaTxECYdBVEnuSQVYK7x1SiKiYq5UCHQVdUBMYgySEOaUw5sNKuAcOBd5LFCrWSUdgZTR7BFFURh5E7ktCqyg6XGNB7ikqLiDyV5pAJPkvgqgL4IlJXjC+UOitBFKiY5DEAHFQWWmsKiIpM2AqtLg85IKqrCKKmSlWB6026shpSUyAnYWh2GAOjUpWDd2jV8nJ+QDwH8tIyRmNnFGAnVqPysDwvzworCzW6PD4oFBVolNVlJYcMknKr1Qo7vKAIlqvLrNY8pVJXrDXUFCU1LNSoSks1FcKeYdSHeQ4KSiE8qOX8dpmMeboceTG8UJUTpQXg7QUqSZGWMJWpJFVMmIOiQoldVYh2QBRKtOXqoqLSCogUKpWB56A0T2UttUoOmUqKAEyYA1VpUZHcpFSpjMZqQ9J9IUeSU65W4nitPAeVNfzOI3DDTBKTqqrMqiLsxtIilUqrtZJkTkmxtpAgCyF+CByUEpWlCoGDYiODvgBfQJap5JUEyXNQUKQxSMAOTMJYeQ7AF+C50mg1ZNYkNztUVWu1eRI7BEGlttrIHJLkaAuNh2ETqwr49SaJsrokz6oiy4rAdI15OZI8ZY4xr1BiZeySwk0ODCpdIaM4rDxUVE2Uyw1agwEswpqDURQ5KDTWMGAHkkKl1sCQYV8ohxdaZYkV9kHFtqR7wBwYJUZdAUNY1RKJ3A6bA68LyIgdIAfacokpT22SYAirLCUrjDpJpZIsMGqM1YIvMMWZmB4KlRr4bKWWqJAYjRKJQVNJEmVoVmTpYYgEDOaFEokEaSkoJQhGXQK/VcZIICZWSHKSSAGhRKDFMiYDn+6VSt6SCa1SEDiw1EAyWlKL4kBpgBUmLW6wAd+PQURLwA0/iJ9VRr5SyeAOZ7RIE/zBG34nroBH0Aukln+F3ws/wiSTAx5kWNKRm7KQeF3eCYuFh4heDC8hBQlJkpEPk1uF4pZPkZGvIzffHPl0shkQIUKECBEiRIgQIUKECBEiRIgQ8Q8FRVEkRREEDSAJGh9xGS0AltAkRVMkiQuTva0JAo4LxsqyDofH09De0dF55EjXER6dHR3tDQ0eB8WyFA9Hsjc2QeDH5vF0HD3R3ePtbW52vobm5ube3p5uIAOIACv4mXUIwbhptHuKcDR0DHr7mp1pbh7AgjvNCfdmJ7+Mvzf3eQcH2tEiaAruLJ3szf9HgIRxgJN7Gjr6jze709KcONjjPf393sHBzq7uI8dOdg2MDvZ7vf09YAxhdo73dzR4KPQaiBbJHsHfDZqFGDfEUifQ9NPS3Mff8nq9xwc73zl9cuAXHV2dHQOdJzpOnzrSNXp69OTg8VM9b/X0gm243X2nPewYGMLPIjwODY+8HSROuJGBtN7RroFfjJ4e7Do66B3oaP9le+c77W8NnHir653RnmOn/+lER3fXwCAwADR0O8bOnB13/KTtgMQ0Rw8FJ1w+XxPd0JyGODnq7r4x+KuTbw2cPjV46tjJwZP9x7yjo6ePnR493X5ioLu951QnBAek6xx7PiBtmZwfY8GUfpougQSwwyNTvoyMDNnUkKfHjSM7NXpytL+v09s32N/7LsRC8JBmZ+/xPkgLsKS/71jvYBe+Mc3d20Bf4Lh0LjANxoA0JHtAfwNABwSbZngGZBmuIHWEH5qz/1h3sxtDgxvyAfgH+j4sbk5zOyEpQK7w9rr5d3Z7xqbT0zlpupRruTDv+IlRQNEkiD5gwCXD8QMJGb6RsDM4+TE7e3vABEYHvJAH8PXx0YGe3v5TwEwzrkVfcHY6zjdK09ORBqk0cIG3hZ+MQ6ATkMhARgQy3hm8OLI0d/PgYO+RgdFmt3egq5N3BTCIt050DtwYAAsYHOxLQ7tw9jY4LnBSDjgACtI5sAVgwUH+RPQCqv7Z6zMZr0FwhjReHPQMdIx2to/2uvs7TnU0vzvYNdjrhIXdoyfaT6Z1Hx3ociIHaf3gClIuzAFPQ8tZD0uiiHzjkyUkA2L2zowsYysHvhG23SnYwXEY9ckjo83egROjzmZQC33u/oYTvaffGfC6T492jEKMALZG2fkA7wbpeONawSS46Xse+ifAAVSGbHDCl3H3va0sZEywnl5UiGlp3g6vd3TgNOjEUa+bl81pPQOjpwaPHjvp9Z74VTcfJ5sbqAtIQCvHcQIP+KTxzDhWmcke5O6gSXJoxJVx15UxN4O7/xVcw1RXGs/B0YZRrxdiIkTFND4FQBR0N7t7vVAqdA909qE+cvc4xq6iC3DcdAuSkJ4euHceAkQjOkSyR7kroDCem/LJfBfnphZGpgRT8PGpIUPGOwO6Q19fcx9fGPCD55WToAgwRUBFgRykddLgCsBBa+Oly5PAhJS7cilwaXK6kbs6T72phgAWQLHkLBjB1ILrzj8H35777Xs49ImFGd4eZBOQGXg74KNCmjsy9DSemLRXL5ELZ4NjEZ1AykkffHrlwZWP07mzHwWuvX/+2jTXcs/DvpmyEY8ToocnfK6pptmmhYvXF6Zc6AwTcx9c5JOkDJ0hPMp4gDzhAVdADq5eOXPj6vjNs1z61UvXLv/LufcvBwKBSailCJZN9pB3ABQMBX7gWxi+Hrx4qykDBKLsPVfGRPDW7BQoJSEzNO+NA7fzCDXP8Vlx+vL5mzcufHQPA+L09PiHNxY/+mQ6MA268U0TzzQqo6E7Lt/ExetzweHrUzBkWcbU8FSGq2kheFtQi1NDDd49cvBuO7EobeVj4vTkb859OD8pDSxe4bgr1+Y/PPevl6alLTc9b5pqZCmCHGpy+Zru3Fp4+wNeH9297bodvDjjmrp4x8VzIHPNgjM490RCj8fRwutktAXuyuXFAHft3uVJSBJXL9/8ZPL+fa5x0cGSb5RSgHg4C6HANfJvwaBQKU7NzY1c/2B25PZtV0Qz++4QHc174+CYYzzA6+R0YKK1NTD97w/OfQwctEpbr1y6Gvjk0ytS7oyHJt+kzitNBKd8rt/O3bpz5+Fd3Oeyz5qaRibmrv/aJQvLBBnKpIZeoSCKg+Z2epHb5ABH3rL46b1rHKYJ6eTkpcWzlxo57sE4+6bYAUlDohqGnb/QNDN3/TOURgjXwq0mwQk2MTPrGXQ64+YGN7oCls3pryCdPnu2JR0GDrox8Mn7N35z7wonvToO7kC+CUGBhuA0PJPhem9kZGbhtk8mVMsyVzD4a1fGFhJ8H1CdzWnxOXCecIBA2gIOLWD60gMsHKTTi1cuX74EIfLqOP1m9FYokgrCznddvD5ycWFG6JhMfebKuD3jk23lIGNiqOGX8TkAVwCBlL4NXGs69zEMXCptlAbO3jt75X5jurRxfij5/gBlMtRIMxm+X9+5BfWyK8N3Fwxh4rcTvECSybY7g6M7LV48cDq9Hs+DHRTgnWuZbOSmbzzgGq9dneYwULTMYyGZXHcAhUwMT8FAm4Zv3VkAC2i6CNL49ozgDzxeq6B9c3RH3OzodnZT442t20mIJEqu5f0bQMR9IWZy0+Ngh0mlgIBdMIwyMAPUEVIxE7w+d9vnE4xAtq18BqYwM8TjgM8KO3whzAFmybNXp1s5wTRa+cCYXNVM07NTgsHLYN+DHYzMvR10CeOPwsEUOEO8eOD2ehwP0qVRKQDjv3Hz2uS5y/fDb+AwOyRzchLLpKEJWSQTZLhmIB1M3LnoCyuCnRy45hxH43JwxDHfEtUK0rGRcvXS7699CBpp01mkkx4S5x+SxQHBNvk2x+q6ONckg7KRN4jo8IEzxKubnO30WS6qGWA3CVj45P1z89OtIB8j4fKCh03ajBxJQZn0an+/F7wVXPjdZwIpO4wgbAizjp44HLwLWUEqjREP4MY9uHa+BSqHTZ6kgXsOlk6OP9AoDDaHC4Vy09x/zGF0CJdIsozt9gChM0h3undPDd1D843RzUBQzpAa7k8Hrp27tEkTZkg6OXZAk0MPwwkAc//wdddI8KIrsv9lDx9G84jr4Azu2CEBlHQHfTO6Ebxi4v796fnfd3ycLvTd01u56bEk+QKIkzszvkgOnJkL3pmZcm3uetndPzyM4hKQGU7G5gCqiT6PYzKWGUQCAHf/05sNl8JzD5BGpWfGkjX3ks9SWCsJ43TJpi7e3rR+npX/fLhTI7iCxNHYchlWnHaMt8ThQJoeWLxxKdAqcACucM9DaJNgByRF+c1LQxR20sMDl/m2jlj2ByRhe2ZAZ4jUjpt1dOSJ0wlZ4V4cCjAucgGh4Q4pEgSCgwp9Xnfw3QSayl/KzTX7aTY4tUnCtgh494svH+7IDFOznh5hViHcVt/iGbxAipEUXlHAD59XSZy0cdFD1z3WW5bHDlwzk/R6bm5qbu6zfGq2yRVNEMCih199ObV9sS9IdbqFgyywi+6M8BA2hS7HWGB3BiI88A/cby47iPq1rJU22yp1oOmRhGIt35yanZ2amruUTwgqYScL4A3qL2e2lI4ymW+BbehDq2/u6+0/2d195MiRru7u/t5e/ngtZ4fjZmMMhbTDIeA2OU4wq7a1xxuPVmrBGw4wMOLc+hJaAdzAH1hHcCq6Nrz7pfqLKWHsm8Yxw3q6e73dneMeh8NBhY/IdHga2o8e8fYd9xDTYVOPawdSruUsxYIf6FcehVZXUh4P0cTBkUCStN+cm7sO99xsNAVydnvfLDzih1+pvpzZyoFrmGpo9zhYHH+EA4qiKVjiaWhwjEFWiBMPBHCBB/MUGaq1pKR8E9r44+qy7QlxgJ01EjwBKPCDLQAFqbnmYYLdPt0ujFj2J1XmlzOvtZNcEx8MgRnR2PgghScUfwI8PNA0S7Nj9642culxaYD8eGGMZr61WSxAgq2tLhSyLWuHDiwkUCQFATF3yexfBw4QZn8+zrNFEcczX6pUX7iEpprM52oKDsXdU475Cy3Iwi404BEZ5z10/bI+hYd+4+uXbcv61QNsrJFoBkvrudnmXCAAaeBD44gviiH84SsggT8oxTfTNMzGnyJjSdYxfqUlPUZY4FVROvdgnoZgCMO3IAeW5ZfLn4f0tXUHJxfpZzBqs39oCTMDpgfwCZAKNIbGHWHxC1UmkAAl40QQGKDjCnt0CtYzfqYxVjBEZbjoya9byRIIQA4s39TWQ3BsOxhfAB+GaJCdu+T3m82CJwi2wEuFCd9WdwBDePiVPFP1p5mp4BBBEhQRd5KQxBqQJjznr3I7ogJfIqVz0/MU+2QtQgBvDFmhJ9+2gSEcSGrARjJEA/PTZ/6lTQrQG3JjSAUQCZmZX/3X7D6rW5IaX2zc3lLDEik9cGacHWurfY0C4EC/svrd948tbRRxAKkBOAB5lLu+tL4E1pD6OgvZuX6WAn/YliQhLGbKNYf3uYMcQxR5Plr11HLTwQfDLRxYICRs/BDKstWxByCZSYr1QzBcN7/wb6EgGxVTKppCky+sBCJ4+FWmXI7XN6OIvW8fnyzHHrzmD3hcFgTDcZp8UouDTtliCJaN71+2rVhWD4QDloVsYPY/XQePyH7dG3iHMPvBH/iuwiYPvqZyjTwzU5O3r9OUUDfQ1NiZQKtUGjlCkeMaL4yxdW21W40gxZIF95XVlbXH+lrlAfgCTYEZgCv8uIRaeQdQOpPYVciQhW++60NkqSozM1NnJfZR1vDikaXGFgMoB/jDMSAfnGdZ3g+2xMOUrG9hEUSEjY3lrNABdBZpGsLAUz4rpGZvZyB7MzTOhLOCzDUC4i0HDEGeWWLdx+8IChqyJJIgHKsZmIRguFpr2eYIWSufb8DCrOVHof9etawxifcFyg/7ev2pGSIiDnirLQik5PopnIMU5hyAAtj7FWrwBrkar5C2992EWoKkgQRpKzaUW846sEJK2QbL6iPY/0JUrF/R2+oT7gs0vZSauvRi3Yz5cR0Vwk6HgFIin5h928fHgiF+TlQpV6ElaOz7nBPCEyId7wek0lYQBUP0xpaMGOEg9HxjBSXCn79+HlqxtCV65o3GaikbPAHEQbb/BTxE4SA7W5DOMxm+CXAEfgrIznvDvkmgHDTBeia51sCVBlbbZkvZyUFK1sZalgUdxLZR/+hlVq02wYaAERHEwQtwBXjIX3q6nh3NDviuAkiF383iSTh4SitRCWERSFAdIvbjDhgSKHbsQcs9FAWWaBToLbYsvT4LDML28i+rq7X6UGI5AHGwBEHvGURE3N1QOS5FSw48EUtD1OzsEBk+uZXWYn4EDuSm/V7skIYaap6lQrWWKAwIWA6trsDqPz9fe7ysX6ESemxKpHEA8UDY20/BM6IykIoFNV4GD72TP5k5T4ccyFUKw35jApgCXbdSmxLNCsIcbDwaC9lSbKsboeUUW10iD1yEcsmPye+FHymAzLC0FJUB1M3Ybx2i6E07IMkaFAlgCaWG/f0qHgRMt2XtQkHKsrbu8ecWiy20bNHb9AmVCDAiCIXmdT92kNYxMG5Pjq/FhFRz/tZrIZo0GBGgiCxV7vsasGzdLp6QkrL23fehjRW95dtl/ZNly+OEyiQol7Jh8GagIHX9hf9/1mMEA6wesv1bJsRhs8qFkCBXle77esgsG9ohDLYYQv3q83pbStZy6IfalLWxRKZHdAWz/8Uwzi0sgSHE5ABdhXXQWzggmSJVmIQq7X5/eIh5voshWNr+2raxkZVi+Xa1LaTXbySUg2fIAXoCiMWwSoweE3NBLOIFH16ZAokiQfAGubpmn5YAcXEjqjgIc2B7EmrLsugtkCRBK6wmsKUGmTE7dcm89KM527w05F9fimkGoCVxX2w/AatAwYdFIKFq8xKqe/7xldiGYLGs8W0lLCHX9CnPmQQmhnwUSE+f/mjmH5diuwIkRhz8Vg5IQpkpD5OgqGT2GRfZelvseGBZWV5bQZKgZljlW2oJA9RLuX7/s3UzyGFzzJyAMXGJTwrbOCAJq5FnAd2her+pgVneJShmPannK6cnz2tfPtfX/0NH/QpQ/dF+CPhCKMRmcm70WMBnBX+MA8Uqw2ExM1NRtj/BSO6aGtZCf/njozaLvu37tpBN/yR+6/ZvAuxRCAdQLPqf5mYLk41R6iWBA9QG0TfCIAgl3h0K9iUTaHZsLTYH+tX6jVAtBMe20PdrlscJOscFOTBjBwknVyD1AaLUS2E8i3nw6GFNhINMRcV+3AFqp9WYhgCVc22tHsKi/kn9Dy/1a0xiLqRCYd2cmuuHQsmMKhDTQnQO0BXIWK1NskqVGXYHuaZiPyUkiVExRmqwRP5mhb5+9MRm09IJORMUsn0+RMGnL/w42Qhk+GPqZHSFmO3dQ8bMTej28V9EaIoae75LzRAmYzX05GWWvp52JKKlBhz4wdGxWODnEszmWPEgF1yBjt3irlBvhoRMzeE9k4DTT7GdYRO2775bXbOF6IQcvMvPNmPf2P+UL4lys7d31l9x4Kd24UBZuskBkFC819/HZsruRQOPtR82/tqG0wyJ4ACEL6rEfP9Tc6zBRzjIzd/1mwqFvppgCWqVvOawaY+isa42HgWWtZerX7dlreyyD/4eYA8p1fwM08KuFIBI3J0Dolod4SAzU61QqxW6sj31FGhyN5kkIKttbW1Nv5yYMzv46ebUH/3r6+Y4FOQu7V63kdqIIah0VRXF5ZUatUpl38s2sG1xY6J+pS0Usn3DJCQeCH00jIq7VEoCB/5d59TIcF8NBEJ49yvLFdhxjg/2SXwOXn4XerlmUybkIG6K4ismwN/JAYCsAW+Q4z/iMRWXF+cQRA5IaGXcDEETG/GCosXyeKOtLctWlzAOcqFm3q1gDnOQH9cQTRpQSOUEWabRqBWKKi1hL1GVxd0Emq7bpXYMc/ANKITlxHGAaS87NVaVsB8OsK9WRTA1arkQFwxEgcYYt7lE09r4iWEltPG/f7bVJ4QDFmca44PnIH7FYtJpColiDU+BHAppwqBG19gdJKXcpWwK28Fy27ffrdTWJ0Yr46T7nmDew9lFVo1aSUTEkkoONlCl2IMz7FY6hvHNGs47JcYO8GD9vWFpDychlyuKSG2J4Ak4LW8nClSV8T5E08zzrFew2WzC42vL9DZkQF+bGA5oms3fI9j4vlChLiINusxIV0lnhSU1cTeBIOt2oD4a6pSJOT6N3sSOBTR/udwI6PgHIRKHNaUMo4nIRZXxEIjH6vhbED42YwvonYuwhZeglmL4a8mtVLxCuH2IF02O91X2Eo2JqI40leSlJFOqKI+/ATQdvh5z+Exvfh5O2BK8aCse98wvSNwpn7t+Mf3KMOJzQCp16grCpFBhRJBn6vIgSJbkxBdJMZwsTMUOS32jQRJlap2BKDSqMDMaywmmVCVP9kYdMEhCq8FpR21ZqVpenUMwQEnhz+3C0nHA102qokPwjMF/BVutUBTsc97pZ4Fyo0pdZjcw2pwKKKKrk/q/eZOGPJVGrVFAzaRW6PbTYf4ZAWJCealOA5AXmP4/OkIYjKkwz3pIue0feIoQIUKECBEiRIgQIUKECBEiRIgQIUKECBEiRIgQIUKECBEiRIgQIeInif8DH9umDBjsiIkAAAAASUVORK5CYII="
+    type="image/x-icon">
+  <style>
+    .broke {
+      position: absolute;
+      top: 30vh;
+      width: 50%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(-45deg, #21202040, #006080);
+      border: 5px solid aliceblue;
+      border-radius: 20px;
+      gap: 20px;
+      box-shadow: 0 0 5px 0 gray;
+    }
+
+    span {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    input {
+      width: 78%;
+      outline: none;
+      padding: 10px 5px;
+      border: 2px solid aliceblue;
+      border-radius: 5px;
+      background-color: transparent;
+      box-shadow: 0 0 4px 0;
+      color: aliceblue;
+      font-weight: 900px;
+      font-size: 20px;
+    }
+
+    button {
+      outline: none;
+      border: 2px solid aliceblue;
+      border-radius: 5px;
+      background-color: transparent;
+      box-shadow: 0 0 4px 0 aliceblue;
+      width: 16%;
+      padding: 10px;
+      color: aliceblue;
+      font-size: 18px;
+      font-weight: 600px;
+      transition: all 1s ease;
+    
+      animation: softGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes softGlow {
+  0% { box-shadow: 0 0 10px #00ffff80, 0 0 20px #00ffff40; }
+  100% { box-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff; }
+}
+
+    button:hover {
+      transform: scale(1.15);
+      box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff,
+        0 0 60px #00ffff;
+      animation: pulse 1.2s infinite alternate;
+    }
+
+    body {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(-45deg, #21202058, #006080, #21202058, #006080);
+    }
+
+    label {
+      font-size: 21px;
+      font-weight: 600;
+      margin-left: 20px;
+      color: black;
+    }
+
+    ::placeholder {
+      color: rgb(177, 172, 172);
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+
+    }
+
+    .bim {
+      margin-top: 80px;
+      font-size: 50px;
+      font-weight: 900;
+      background: linear-gradient(90deg, #00ffff, #ffffff, #00ffff);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 4s linear infinite;
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      letter-spacing: 3px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+    @media (max-width: 920px) {
+      .broke {
+        width: 60%;
+      }
+
+      button {
+        width: 26%;
+        padding: 10px;
+
+      }
+    }
+
+    @media (max-width: 820px) {
+      .broke {
+        width: 70%;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .broke {
+        width: 80%;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .broke {
+        width: 80%;
+      }
+
+      button {
+        width: 36%;
+        padding: 10px;
+      }
+      .bim{
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .broke {
+        width: 76%;
+      }
+
+      span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      input {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 404px) {
+      button {
+        width: 56%;
+        padding: 10px;
+
+      }
+    }
+        @media (max-width: 421px) {
+      button {
+        width: 66%;
+        padding: 10px;
+
+      }
+    }
+        @media (max-width: 415px) {
+      .broke {
+      top: 20vh;
+      }
+      .bim{
+              margin-top: 40px;
+              font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="bim">BMI CALCULATOR</h1>
+  <div class="broke">
+    <span>
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <label for="input-weight">Weight (kg)</label>
+        <input type="number" id="input-weight" placeholder="Enter weight in kg">
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <label for="input-height">Height (cm)</label>
+        <input type="number" id="input-height" placeholder="Enter height in cm">
+      </div>
+    </span>
+
+    <button onclick="result()">
+      Check BMI
+    </button>
+    <h2 id="tag"></h2>
+  </div>
+
+</body>
+
+</html>
+<script>
+  let weight = document.getElementById('input-weight');
+  let height = document.getElementById('input-height');
+  let hitter = document.getElementById('tag');
+
+
+
+
+
+  function result() {
+    if (!weight.value || !height.value) {
+      hitter.innerHTML = 'Please enter both weight and height';
+      hitter.style.color = 'white';
+      return;
+    }
+
+    let w = parseFloat(weight.value);
+    let h = parseFloat(height.value) / 100;
+
+    if (isNaN(w) || isNaN(h) || h === 0) {
+      hitter.innerHTML = 'Invalid input';
+      return;
+    }
+
+    let BMI = w / (h * h);
+    BMI = BMI.toFixed(2);
+
+    if (BMI < 18.5) {
+      hitter.innerHTML = `Your BMI is ${BMI} - Underweight`;
+      hitter.style.color = 'white';
+    } else if (BMI < 25) {
+      hitter.innerHTML = `Your BMI is ${BMI} - Normal Weight ✅`;
+      hitter.style.color = 'white';
+    } else if (BMI < 30) {
+      hitter.innerHTML = `Your BMI is ${BMI} - Over Weight ⚠️`;
+      hitter.style.color = 'white';
+    } else {
+      hitter.innerHTML = `Your BMI is ${BMI} - Obese ❌`;
+      hitter.style.color = 'white';
+    }
+
+    weight.value = '';
+    height.value = '';
+  }
+</script>
